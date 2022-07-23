@@ -1,9 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Utils/HeightmapGenerator.h"
+#include "Game/HeightmapGenerator.h"
 #include "Utils/FastNoiseLite.h"
-#include "Foliage.h"
+#include "Game/Foliage.h"
+#include "Utils/PRNG.h"
 
 FHeightmapGenerator::FHeightmapGenerator(FVector InPosition, int InSize, FastNoiseLite* InNoise, UCurveFloat* InCurve, FVector InRandomOffset)
 {
@@ -31,6 +32,7 @@ bool FHeightmapGenerator::Init()
 {
 	// Initialize Blocks
 	Blocks.SetNum(Size * Size * 384);
+	rng = new PRNG();
 	// Return false if you want to abort the thread
 	return true;
 }
@@ -89,7 +91,7 @@ uint32 FHeightmapGenerator::Run()
 				{
 					if (Blocks[GetBlockIndex(x, y, z)] == EBlock::Grass && (z > 335 && z < 375 && x > 2 && x < 13 && y > 2 && y < 13))
 					{
-						if (FMath::RandRange(1.f, 50.f) > 49.f)
+						if (rng->getRandomFloat(1.f, 50.f) > 49.f)
 						{
 							for (FBlockDefinition BlockDef : FFoliage::OakTreeSelection())
 							{
@@ -99,6 +101,16 @@ uint32 FHeightmapGenerator::Run()
 								}
 							}
 						}
+						//if (FMath::RandRange(1.f, 50.f) > 49.f)
+						//{
+						//	for (FBlockDefinition BlockDef : FFoliage::OakTreeSelection())
+						//	{
+						//		if (Blocks[GetBlockIndex(x + BlockDef.Position.X, y + BlockDef.Position.Y, z + BlockDef.Position.Z)] == EBlock::Air)
+						//		{
+						//			Blocks[GetBlockIndex(x + BlockDef.Position.X, y + BlockDef.Position.Y, z + BlockDef.Position.Z)] = BlockDef.BlockType;
+						//		}
+						//	}
+						//}
 					}
 				}
 			}

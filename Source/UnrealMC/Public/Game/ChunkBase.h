@@ -30,7 +30,7 @@ public:
 		int Size = 16;
 
 	UPROPERTY(BlueprintReadOnly, EditInstanceOnly, Category = "Chunk")
-		TObjectPtr<UMaterialInterface> Material;
+		UMaterialInterface* Material;
 
 	UPROPERTY(EditInstanceOnly, Category = "Height Map")
 		float Frequency;

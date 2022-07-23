@@ -4,9 +4,9 @@
 #include "Game/ChunkBase.h"
 #include "Utils/FastNoiseLite.h"
 #include "ProceduralMeshComponent.h"
-#include "Utils/HeightmapGenerator.h"
-#include "Water.h"
-#include "ObjectBase.h"
+#include "Game/HeightmapGenerator.h"
+#include "Game/Water.h"
+#include "Game/ObjectBase.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values

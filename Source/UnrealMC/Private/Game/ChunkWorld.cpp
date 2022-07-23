@@ -186,7 +186,7 @@ void AChunkWorld::Generate3DWorld()
 			{
 				if (!GetWorldTimerManager().IsTimerActive(SpawnChunksHandle))
 				{
-					GetWorldTimerManager().SetTimer(SpawnChunksHandle, this, &AChunkWorld::SpawnChunk, 0.02f, true);
+					GetWorldTimerManager().SetTimer(SpawnChunksHandle, this, &AChunkWorld::SpawnChunk, 0.05f, true);
 				}
 			}
 			ChunkCount++;

@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Utils/Enums.h"
-#include "ChunkVector.h"
+#include "Utils/ChunkVector.h"
 #include "GameFramework/Actor.h"
 #include "ChunkWorld.generated.h"
 
@@ -26,7 +26,7 @@ public:
 		int DrawDistance = 5;
 
 	UPROPERTY(EditInstanceOnly, Category = "Chunk")
-		TObjectPtr<UMaterialInterface> Material;
+		UMaterialInterface* Material;
 
 	UPROPERTY(BlueprintReadOnly, EditInstanceOnly, Category = "Chunk")
 		int Size = 16;

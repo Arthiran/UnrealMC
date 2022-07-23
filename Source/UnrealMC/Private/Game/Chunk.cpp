@@ -238,33 +238,169 @@ void AChunk::CreateQuad(
 	const FIntVector V4
 )
 {
-	int alpha = 0;
+	float XOffset = 0;
+	float YOffset = 0;
+
+	const auto Normal = FVector(AxisMask * Mask.Normal);
 
 	if (Mask.Block == EBlock::OakLeaves)
 	{
-		alpha = 120;
+		XOffset = 7;
+		YOffset = 0;
 	}
 	else if (Mask.Block == EBlock::Oak)
 	{
-		alpha = 90;
+		if (Normal.Z == 1 || Normal.Z == -1)
+		{
+			XOffset = 6;
+			YOffset = 0;
+		}
+		else
+		{
+			XOffset = 5;
+			YOffset = 0;
+		}
 	}
 	else if (Mask.Block == EBlock::Grass)
 	{
-		alpha = 60;
+		if (Normal.Z == 1)
+		{
+			XOffset = 1;
+			YOffset = 0;
+		}
+		else if (Normal.Z == -1)
+		{
+			XOffset = 2;
+			YOffset = 0;
+		}
+		else
+		{
+			XOffset = 0;
+			YOffset = 0;
+		}
 	}
 	else if (Mask.Block == EBlock::Dirt)
 	{
-		alpha = 30;
+		XOffset = 3;
+		YOffset = 0;
 	}
 	else if (Mask.Block == EBlock::Stone)
 	{
-		alpha = 0;
+		XOffset = 4;
+		YOffset = 0;
+	}
+	else if (Mask.Block == EBlock::Coal)
+	{
+		XOffset = 0;
+		YOffset = 1;
+	}
+	else if (Mask.Block == EBlock::Iron)
+	{
+		XOffset = 1;
+		YOffset = 1;
+	}
+	else if (Mask.Block == EBlock::Lapis)
+	{
+		XOffset = 2;
+		YOffset = 1;
+	}
+	else if (Mask.Block == EBlock::Gold)
+	{
+		XOffset = 3;
+		YOffset = 1;
+	}
+	else if (Mask.Block == EBlock::Diamond)
+	{
+		XOffset = 4;
+		YOffset = 1;
+	}
+	else if (Mask.Block == EBlock::Redstone)
+	{
+		XOffset = 5;
+		YOffset = 1;
+	}
+	else if (Mask.Block == EBlock::Brown_Concrete)
+	{
+		XOffset = 6;
+		YOffset = 1;
+	}
+	else if (Mask.Block == EBlock::Purple_Concrete)
+	{
+		XOffset = 7;
+		YOffset = 1;
+	}
+	else if (Mask.Block == EBlock::Gray_Concrete)
+	{
+		XOffset = 0;
+		YOffset = 2;
+	}
+	else if (Mask.Block == EBlock::Cyan_Concrete)
+	{
+		XOffset = 1;
+		YOffset = 2;
+	}
+	else if (Mask.Block == EBlock::Green_Concrete)
+	{
+		XOffset = 2;
+		YOffset = 2;
+	}
+	else if (Mask.Block == EBlock::Lime_Concrete)
+	{
+		XOffset = 3;
+		YOffset = 2;
+	}
+	else if (Mask.Block == EBlock::Orange_Concrete)
+	{
+		XOffset = 4;
+		YOffset = 2;
+	}
+	else if (Mask.Block == EBlock::Magenta_Concrete)
+	{
+		XOffset = 5;
+		YOffset = 2;
+	}
+	else if (Mask.Block == EBlock::Light_Blue_Concrete)
+	{
+		XOffset = 6;
+		YOffset = 2;
+	}
+	else if (Mask.Block == EBlock::Pink_Concrete)
+	{
+		XOffset = 7;
+		YOffset = 2;
+	}
+	else if (Mask.Block == EBlock::Blue_Concrete)
+	{
+		XOffset = 0;
+		YOffset = 3;
+	}
+	else if (Mask.Block == EBlock::Light_Gray_Concrete)
+	{
+		XOffset = 1;
+		YOffset = 3;
+	}
+	else if (Mask.Block == EBlock::White_Concrete)
+	{
+		XOffset = 2;
+		YOffset = 3;
+	}
+	else if (Mask.Block == EBlock::Black_Concrete)
+	{
+		XOffset = 3;
+		YOffset = 3;
+	}
+	else if (Mask.Block == EBlock::Yellow_Concrete)
+	{
+		XOffset = 4;
+		YOffset = 3;
+	}
+	else if (Mask.Block == EBlock::Red_Concrete)
+	{
+		XOffset = 5;
+		YOffset = 3;
 	}
 
-	const auto Normal = FVector(AxisMask * Mask.Normal);
-	const auto Color = FColor(255, 0, 0, alpha);
-	const auto UpColor = FColor(0, 255, 0, alpha);
-	const auto DownColor = FColor(0, 0, 255, alpha);
+	const auto Color = FColor(XOffset, YOffset, Width, Height);
 
 	MeshData.Vertices.Append({
 		FVector(V1) * 100,
@@ -289,40 +425,40 @@ void AChunk::CreateQuad(
 		Normal
 		});
 
-	//MeshData.Colors.Append({
-	//	Color,
-	//	Color,
-	//	Color,
-	//	Color
-	//	});
+	MeshData.Colors.Append({
+		Color,
+		Color,
+		Color,
+		Color
+		});
 
-	if (Normal.Z == 1)
-	{
-		MeshData.Colors.Append({
-			UpColor,
-			UpColor,
-			UpColor,
-			UpColor
-			});
-	}
-	else if (Normal.Z == -1)
-	{
-		MeshData.Colors.Append({
-			DownColor,
-			DownColor,
-			DownColor,
-			DownColor
-			});
-	}
-	else
-	{
-		MeshData.Colors.Append({
-			Color,
-			Color,
-			Color,
-			Color
-			});
-	}
+	//if (Normal.Z == 1)
+	//{
+	//	MeshData.Colors.Append({
+	//		UpColor,
+	//		UpColor,
+	//		UpColor,
+	//		UpColor
+	//		});
+	//}
+	//else if (Normal.Z == -1)
+	//{
+	//	MeshData.Colors.Append({
+	//		DownColor,
+	//		DownColor,
+	//		DownColor,
+	//		DownColor
+	//		});
+	//}
+	//else
+	//{
+	//	MeshData.Colors.Append({
+	//		Color,
+	//		Color,
+	//		Color,
+	//		Color
+	//		});
+	//}
 
 	MeshData.UV0.Append({
 	FVector2D(0, 0),
