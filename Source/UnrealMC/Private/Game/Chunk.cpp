@@ -399,7 +399,7 @@ void AChunk::CreateQuad(
 		XOffset = 5;
 		YOffset = 3;
 	}
-
+	
 	const auto Color = FColor(XOffset, YOffset, Width, Height);
 
 	MeshData.Vertices.Append({
@@ -431,34 +431,6 @@ void AChunk::CreateQuad(
 		Color,
 		Color
 		});
-
-	//if (Normal.Z == 1)
-	//{
-	//	MeshData.Colors.Append({
-	//		UpColor,
-	//		UpColor,
-	//		UpColor,
-	//		UpColor
-	//		});
-	//}
-	//else if (Normal.Z == -1)
-	//{
-	//	MeshData.Colors.Append({
-	//		DownColor,
-	//		DownColor,
-	//		DownColor,
-	//		DownColor
-	//		});
-	//}
-	//else
-	//{
-	//	MeshData.Colors.Append({
-	//		Color,
-	//		Color,
-	//		Color,
-	//		Color
-	//		});
-	//}
 
 	MeshData.UV0.Append({
 	FVector2D(0, 0),

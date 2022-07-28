@@ -60,7 +60,6 @@ void AChunkBase::Tick(float DeltaTime)
 			ApplyMesh();
 			FinishedHMGeneration = true;
 			delete Worker;
-
 			CreateWater();
 		}
 	}

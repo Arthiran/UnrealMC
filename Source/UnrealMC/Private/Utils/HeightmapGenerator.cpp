@@ -101,16 +101,6 @@ uint32 FHeightmapGenerator::Run()
 								}
 							}
 						}
-						//if (FMath::RandRange(1.f, 50.f) > 49.f)
-						//{
-						//	for (FBlockDefinition BlockDef : FFoliage::OakTreeSelection())
-						//	{
-						//		if (Blocks[GetBlockIndex(x + BlockDef.Position.X, y + BlockDef.Position.Y, z + BlockDef.Position.Z)] == EBlock::Air)
-						//		{
-						//			Blocks[GetBlockIndex(x + BlockDef.Position.X, y + BlockDef.Position.Y, z + BlockDef.Position.Z)] = BlockDef.BlockType;
-						//		}
-						//	}
-						//}
 					}
 				}
 			}

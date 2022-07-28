@@ -216,7 +216,9 @@ void AWater::CreateWaterQuad(
 )
 {
 	const auto Normal = FVector(AxisMask * Mask.Normal);
-	const auto Color = FColor(255, 255, 255, 255);
+	//UNCOMMENT LATER
+	//const auto Color = FColor(255, 255, 255, 255);
+	const auto Color = FColor::Green;
 
 	if (Normal.Z == 1)
 	{

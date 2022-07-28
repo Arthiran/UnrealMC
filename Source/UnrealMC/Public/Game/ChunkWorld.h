@@ -35,7 +35,7 @@ public:
 		EGenerationType GenerationType;
 
 	UPROPERTY(EditInstanceOnly, Category = "Height Map")
-		float Frequency = 0.03f;
+		float Frequency = 0.0175f;
 
 	UPROPERTY(EditDefaultsOnly, Category = Curve)
 		UCurveFloat* Continentalness;
